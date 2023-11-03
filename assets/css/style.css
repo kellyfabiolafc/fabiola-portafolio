@@ -798,7 +798,12 @@ footer {
   color: #3a5335; /* Cambia el color del corazón según tu diseño */
   font-size: 16px;
 }
-
+.filter-button.selected {
+  background-color: #FF5733; /* Cambia el color de fondo */
+  color: #fff; /* Cambia el color del texto */
+  border: none; /* Elimina el borde si lo hay */
+  /* Otros estilos según tu diseño */
+}
 
 /* ===Media Queries=== */
 @media screen and (min-width: 576px) {

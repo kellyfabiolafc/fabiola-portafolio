@@ -95,23 +95,51 @@ function scrollTop() {
 
 window.addEventListener('scroll', scrollTop);
 
+document.addEventListener('DOMContentLoaded', function() {
+    const cardsContainer = document.getElementById('cards-container');
 
-
-// ---Link Active Portfolio---
-//The Portfolio Projects Nav Menu Item is highlighted according to the selection made by the user
-const linkPortfolio = document.querySelectorAll('.portfolio__item');
-
-function activePortfolio() {
-    if(linkPortfolio){
-        linkPortfolio.forEach(i => i.classList.remove('active-portfolio'));
-        this.classList.add('active-portfolio');
-        
-        const element = document.querySelectorAll('.portfolio__content');
-        element.forEach(i => i.classList.remove('non-rec-project'));
+    function hideAllCards() {
+        cardsContainer.querySelectorAll('.card').forEach(card => {
+            card.style.display = 'none';
+        });
     }
-}
 
-linkPortfolio.forEach(i => i.addEventListener('click', activePortfolio));
+    function showCards(category) {
+        hideAllCards();
+        cardsContainer.querySelectorAll('.' + category).forEach(card => {
+            card.style.display = 'block';
+        });
+    }
+
+    function deactivateAllButtons() {
+        document.querySelectorAll('.filter-button').forEach(button => {
+            button.classList.remove('selected');
+        });
+    }
+
+    function activateButton(button) {
+        button.classList.add('selected');
+    }
+
+    // Mostrar todas las cards por defecto
+    showCards('card');
+
+    // Seleccionar el botón "Mostrar Todas" al cargar la página
+    const showAllButton = document.querySelector('[data-category="card"]');
+    activateButton(showAllButton);
+
+    document.getElementById('button-container').addEventListener('click', function(event) {
+        if(event.target.classList.contains('filter-button')) {
+            event.preventDefault();
+            hideAllCards();
+            showCards(event.target.dataset.category);
+            deactivateAllButtons();
+            activateButton(event.target);
+        }
+    });
+});
+
+
 
 
 // --- GSAP ---
