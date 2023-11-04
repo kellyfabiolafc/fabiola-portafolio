@@ -815,6 +815,7 @@ footer {
 }
 
 .filter-button {
+  cursor: pointer;
   margin-right: 0.8rem;
   background-color: var(--first-color-light);
   transform: translate(0px, 0px);
