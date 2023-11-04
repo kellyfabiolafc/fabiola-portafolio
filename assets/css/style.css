@@ -799,10 +799,39 @@ footer {
   font-size: 16px;
 }
 .filter-button.selected {
-  background-color: #FF5733; /* Cambia el color de fondo */
+  background-color: var(--first-color-dark);/* Cambia el color de fondo */
   color: #fff; /* Cambia el color del texto */
   border: none; /* Elimina el borde si lo hay */
   /* Otros estilos según tu diseño */
+}
+
+
+#button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 3rem;
+}
+
+.filter-button {
+  margin-right: 0.8rem;
+  background-color: var(--first-color-light);
+  transform: translate(0px, 0px);
+  opacity: 1;
+  color: var(--first-color-lighten);
+    padding: 0.75rem 1rem;
+    border-radius: 0.25rem;
+    transition: 0.3s;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    font-weight: var(--font-medium);
+    border: none;
+  /* Otros estilos según tus preferencias */
+}
+
+.filter-button:hover{
+  background-color: var(--first-color-dark);
 }
 
 /* ===Media Queries=== */
