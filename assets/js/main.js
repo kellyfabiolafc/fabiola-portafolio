@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function showCards(category) {
         hideAllCards();
         cardsContainer.querySelectorAll('.' + category).forEach(card => {
-            card.style.display = 'block';
+            card.style.display = 'flex';
         });
     }
 
