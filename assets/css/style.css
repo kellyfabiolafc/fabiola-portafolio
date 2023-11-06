@@ -55,7 +55,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 ::selection {
-  background-color: #5c715e;
+  background-color: var(--first-color-dark);
 }
 @media screen and (min-width: 768px) {
   :root {
