@@ -300,7 +300,6 @@ img {
 .button-white:hover {
   background-color: #f2f2f2; /* Cambio de color de fondo en hover */
   color: #666666; /* Cambio de color del texto en hover */
-  
 }
 
 .button-link {
@@ -795,7 +794,7 @@ footer {
 }
 
 .container_text--footer i {
-  color: #3a5335; /* Cambia el color del corazón según tu diseño */
+  color: var(--first-color-dark); /* Cambia el color del corazón según tu diseño */
   font-size: 16px;
 }
 .filter-button.selected {
