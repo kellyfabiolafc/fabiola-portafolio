@@ -6,10 +6,10 @@
   --header-height: 3rem;
 
   /* ===Colors=== */
-  --first-color: #87a08b;
-  --first-color-dark: #5c715e;
-  --first-color-light: #a1b9a9; /* Este es el color "light" ajustado */
-  --text-color: #3a5335;
+  --first-color: #A5A5A5;
+  --first-color-dark: #6C7375;
+  --first-color-light: #A5A5A5; /* Este es el color "light" ajustado */
+  --text-color: #050A30;
   --first-color-lighten: #ffffff;
   --light-color: #87a08b0a;
 
@@ -169,7 +169,10 @@ img {
   justify-content: space-between;
   align-items: center;
 }
-
+i.fa-heart {
+  color: var(--ogre-green);
+  font-size: 10px;
+}
 @media screen and (max-width: 768px) {
   .nav__menu {
     position: fixed;
@@ -794,7 +797,7 @@ footer {
 }
 
 .container_text--footer i {
-  color: var(--first-color-dark); /* Cambia el color del corazón según tu diseño */
+  color: var(--text-color); /* Cambia el color del corazón según tu diseño */
   font-size: 16px;
 }
 .filter-button.selected {
