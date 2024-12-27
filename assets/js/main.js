@@ -9,7 +9,7 @@ function changetitle(){
             document.title = "Hire Me!";
         }
         else {
-            document.title = "Fabiola Flores | Front-End Web Developer";
+            document.title = "Fabiola Flores | QA tester - Front-End Web Developer";
         }
         interval_no++;
 }
@@ -95,53 +95,78 @@ function scrollTop() {
 
 window.addEventListener('scroll', scrollTop);
 
+// Function to filter skills and projects.
 document.addEventListener('DOMContentLoaded', function() {
-    const cardsContainer = document.getElementById('cards-container');
+    function createFilterSystem(cardsContainerId, buttonsContainerId) {
+        const cardsContainer = document.getElementById(cardsContainerId);
+        const buttonsContainer = document.getElementById(buttonsContainerId);
 
-    function hideAllCards() {
-        cardsContainer.querySelectorAll('.card').forEach(card => {
-            card.style.display = 'none';
-        });
-    }
-
-    function showCards(category) {
-        hideAllCards();
-        cardsContainer.querySelectorAll('.' + category).forEach(card => {
-            card.style.display = 'flex';
-        });
-    }
-
-    function deactivateAllButtons() {
-        document.querySelectorAll('.filter-button').forEach(button => {
-            button.classList.remove('selected');
-        });
-    }
-
-    function activateButton(button) {
-        button.classList.add('selected');
-    }
-
-    // Mostrar todas las cards por defecto
-    showCards('card');
-
-    // Seleccionar el botón "Mostrar Todas" al cargar la página
-    const showAllButton = document.querySelector('[data-category="card"]');
-    activateButton(showAllButton);
-
-    document.getElementById('button-container').addEventListener('click', function(event) {
-        if(event.target.classList.contains('filter-button')) {
-            event.preventDefault();
-            hideAllCards();
-            showCards(event.target.dataset.category);
-            deactivateAllButtons();
-            activateButton(event.target);
+        function hideAllCards() {
+            cardsContainer.querySelectorAll('.card').forEach(card => {
+                card.style.display = 'none';
+            });
         }
-    });
+
+        function showCards(category) {
+            hideAllCards();
+            cardsContainer.querySelectorAll('.' + category).forEach(card => {
+                card.style.display = 'flex';
+            });
+        }
+
+        function deactivateAllButtons() {
+            buttonsContainer.querySelectorAll('.filter-button').forEach(button => {
+                button.classList.remove('selected');
+            });
+        }
+
+        function activateButton(button) {
+            button.classList.add('selected');
+        }
+
+        // Mostrar todas las cards por defecto
+        showCards('card');
+
+        // Seleccionar el botón "Mostrar Todas" al cargar la página
+        const showAllButton = buttonsContainer.querySelector('[data-category="card"]');
+        if (showAllButton) {
+            activateButton(showAllButton);
+        }
+
+        buttonsContainer.addEventListener('click', function(event) {
+            if (event.target.classList.contains('filter-button')) {
+                event.preventDefault();
+                hideAllCards();
+                showCards(event.target.dataset.category);
+                deactivateAllButtons();
+                activateButton(event.target);
+            }
+        });
+    }
+
+    // Crear sistemas de filtro para proyectos y habilidades
+    createFilterSystem('skills-cards-container', 'skills-button-container');
+    createFilterSystem('projects-cards-container', 'projects-button-container');
+    
 });
 
 
 
+//Switching Qualification tabs
+const tabs = document.querySelectorAll("[data-target]");
+const tabContents = document.querySelectorAll("[data-content]");
 
+tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        const target = document.querySelector(tab.dataset.target);
+
+        tabContents.forEach((tabContent) => tabContent.classList.remove("qualification__active"));
+        target.classList.add("qualification__active");
+
+        tabs.forEach((tab) => tab.classList.remove("qualification__active"));
+        tab.classList.add("qualification__active");
+    });
+});
 // --- GSAP ---
 // GSAP Animations is used to animate the Home Page on startup
 gsap.from('.home__img', {opacity: 0, duration: 2, delay: .5, x: 60, ease: 'power2.out'});
