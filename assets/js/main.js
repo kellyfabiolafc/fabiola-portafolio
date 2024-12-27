@@ -151,6 +151,22 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
+//Switching Qualification tabs
+const tabs = document.querySelectorAll("[data-target]");
+const tabContents = document.querySelectorAll("[data-content]");
+
+tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+        const target = document.querySelector(tab.dataset.target);
+
+        tabContents.forEach((tabContent) => tabContent.classList.remove("qualification__active"));
+        target.classList.add("qualification__active");
+
+        tabs.forEach((tab) => tab.classList.remove("qualification__active"));
+        tab.classList.add("qualification__active");
+    });
+});
 // --- GSAP ---
 // GSAP Animations is used to animate the Home Page on startup
 gsap.from('.home__img', {opacity: 0, duration: 2, delay: .5, x: 60, ease: 'power2.out'});
